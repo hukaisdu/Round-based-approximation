@@ -39,7 +39,7 @@ def fwt(v):
                 y = v[j + h]
                 v[j] = x + y
                 v[j + h] = x - y
-        h <<= 1  
+        h <<= 1
 
 def Mj(v0, v1, u0, u1, j):
     U0 = ( rotr( v0 ^ v1, 1 ) ) >> ( N - 1 - j ) & 0x1
@@ -134,14 +134,14 @@ def getBias( ROUND, Diff ):
 
     GAMMA = np.zeros( (N, 4), dtype = np.float64 )
 
-    for opt in range( 512 ):
+    for opt in range( 8 ):
         opt0 = opt>>2 & 0x1
         opt1 = opt>>1 & 0x1
         opt2 = opt>>0 & 0x1
 
         gamma = np.zeros( (N, 4), dtype = np.float64 )
         for i in range(N):
-            if i == 0: 
+            if i == 0:
                 gamma[i, 2 * opt0 + Diff[i] ] = 1
                 fwt( gamma[i] )
             elif i == 1:
